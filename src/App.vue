@@ -1,37 +1,21 @@
 <template>
   <div class="wrapper">
-    
     <Header></Header>
-    <Promo></Promo>
-    <Training></Training>
-    <Team></Team>
-    <Potencial></Potencial>
-    <PricingLayout></PricingLayout>
+    <router-view></router-view>
     <Footer></Footer>
   </div>
 </template>
 
 <script>
 import Header from './components/Header.vue';
-import Promo from './components/Promo.vue';
-import Training from './components/Training.vue';
-import Team from './components/Team.vue';
-import Potencial from './components/Potencial.vue';
-// import PricingLayout from './components/PricingLayout.vue';
 import Footer from './components/Footer.vue';
-
 
 export default {
   name: 'App',
   components: {
     Header,
-    Promo,
-    Training,
-    Team,
-    Potencial,
-    // PricingLayout,
     Footer
-},
+  },
   data() {
     return {
 
@@ -41,11 +25,12 @@ export default {
 </script>
 
 <style>
-*{
+* {
   box-sizing: border-box;
   overflow: visible;
-  font-family: Poppins;
+  font-family: Poppins, sans-serif;
 }
+
 .wrapper {
   margin: 65px 138px 34px 138px;
 

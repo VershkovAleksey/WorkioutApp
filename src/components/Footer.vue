@@ -1,6 +1,5 @@
 <template>
     <div>
-        <hr>
     <el-row class="footer">
 <el-col :span="6">
         <div class="social__column" >
@@ -41,7 +40,7 @@
         </el-col>
 
     </el-row>
-<hr>
+
     <el-row>
         <el-col class="copyright" >
             <div class="copy__right"> 
@@ -111,7 +110,6 @@ gap: 8px;
 .copyright {
     display: flex;
     margin: 36.5px auto 15px auto;
-    justify-content: space-between;
 }
 
 .social__network {
@@ -184,7 +182,7 @@ word-wrap: break-word;
 .copy__left{
     display: flex;
 justify-content: flex-end;
-/* margin-left: 723px; */
+margin-left: 723px;
 
 }
 .copy {

@@ -1,4 +1,4 @@
-# figma
+# workoutapp
 
 ## Project setup
 ```

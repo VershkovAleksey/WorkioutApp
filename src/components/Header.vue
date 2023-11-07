@@ -3,38 +3,52 @@
         <el-menu mode="horizontal" class="menu" text-color="#f2f2f2">
             <el-menu-item>
                 <router-link to="/">
-                    <p>
-                        <img src="@/assets/images/Logo.svg" class="logoHeader">
-                    </p>
+                    <img src="@/assets/images/Logo.svg" class="logoHeader">
                 </router-link>
             </el-menu-item>
             <div class="menu__items-right">
                 <el-menu-item>
-                    <p>
-                        <router-link to="/" class="item__haeder">EXERCICES</router-link>
-                    </p>
+                    <p><router-link to="/" class="item__haeder">EXERCICES</router-link></p>
                 </el-menu-item>
                 <el-menu-item>
-                    <p><router-link to="/two" class="item__haeder">COMMUNITY</router-link></p>
+                    <p><router-link to="/community" class="item__haeder">COMMUNITY</router-link></p>
                 </el-menu-item>
                 <el-menu-item>
-                    <p><router-link to="/three" class="item__haeder">PRICING</router-link></p>
+                    <p><router-link to="/pricing" class="item__haeder">PRICING</router-link></p>
                 </el-menu-item>
                 <el-menu-item>
-                    <p><router-link to="/four" class="item__haeder">ABOUT US</router-link></p>
+                    <p> <router-link to="/about" class="item__haeder">ABOUT US</router-link></p>
                 </el-menu-item>
 
-                <el-menu-item class="author_button" @click="login">
-                    <p class="login">LOGIN</p>
+                <el-menu-item class="autorize__buttons" @click="login">
+                    <p class="login">Login</p>
                 </el-menu-item>
-                <el-menu-item  class="author_button" @click="signIn">
-                    <p class="signIn">SIGN IN</p>
+                <el-menu-item class="autorize__buttons" @click="signIn">
+                    <p class="signIn">Sign in</p>
                 </el-menu-item>
             </div>
         </el-menu>
 
-        <el-dialog v-model="loginVisible" title="Зарегистрироватся" width="30%" :before-close="handleClose">
-            <!-- <span>This is a message</span> -->
+        <el-dialog class="registration__dialog" v-model="loginVisible" title="Registration" width="30%"
+            :before-close="handleClose">
+            <el-form label-width="100px" :model="registrationForm">
+                <el-form-item class="form__label" label="First name">
+                    <el-input v-model="registrationForm.firstName"></el-input>
+                </el-form-item>
+                <el-form-item class="form__label" label="Last name">
+                    <el-input v-model="registrationForm.lastName"></el-input>
+                </el-form-item>
+                <el-form-item class="form__label" label="Birthdate">
+                    <el-date-picker v-model="registrationForm.birthDate" type="date" placeholder="Choose your birth date">
+                    </el-date-picker>
+                </el-form-item>
+                <el-form-item class="form__label" label="EMail">
+                    <el-input v-model="registrationForm.Email"></el-input>
+                </el-form-item>
+                <el-form-item class="form__label" label="Password">
+                    <el-input v-model="registrationForm.password"></el-input>
+                </el-form-item>
+            </el-form>
             <span slot="footer" class="dialog-footer">
                 <el-button @click="loginVisible = false">Отмена</el-button>
                 <el-button type="primary" @click="loginVisible = false">Подтвердить</el-button>
@@ -56,7 +70,14 @@ export default {
     data() {
         return {
             loginVisible: false,
-            signInVisible: false
+            signInVisible: false,
+            registrationForm: {
+                firstName: '',
+                lastName: '',
+                birthDate: '',
+                Email: '',
+                password: ''
+            }
         }
     },
     methods: {
@@ -66,11 +87,11 @@ export default {
         signIn() {
             this.signInVisible = true;
         }
-    }
+    },
 }
 </script>
 
-<style scoped>
+<style >
 .menu {
     display: flex;
     justify-content: space-between;
@@ -78,7 +99,32 @@ export default {
     background-color: #1F1C26;
     align-items: center;
     color: #f2f2f2;
-    margin-bottom: 61px;
+    --el-menu-item-height: auto;
+}
+
+.el-input__wrapper {
+    background-color: #1F1C26;
+}
+
+.el-input__inner {
+    color: #f2f2f2;
+}
+
+.el-dialog__title {
+    color: #f2f2f2;
+}
+
+.registration__dialog {
+    background-color: #332F3C;
+    color: #f2f2f2;
+}
+
+.form__label {
+    color: #f2f2f2;
+}
+
+a {
+    text-decoration: none;
 }
 
 .el-menu--horizontal.el-menu {
@@ -93,6 +139,7 @@ export default {
     display: flex;
     justify-content: space-between;
     color: #f2f2f2;
+    align-items: center;
 }
 
 .el-menu--horizontal .el-menu-item:not(.is-disabled):focus,
@@ -100,7 +147,7 @@ export default {
     background-color: #1F1C26;
 }
 
-.menu__items-right .el-menu-item .item__haeder:hover {
+.menu__items-right .el-menu-item:hover {
     background-color: #1F1C26;
     border-bottom: 3px solid #59253E;
 }
@@ -109,43 +156,35 @@ export default {
 .el-menu--horizonta:hover:focus {
     background-color: #1F1C26;
 }
-.author_button{
-    padding: auto auto;
-    padding-left: 0;
-    padding-right: 0;
-}
+
 .item__haeder {
     color: #f2f2f2;
-    font-size: 14px;
-    font-weight: 400;
     text-transform: uppercase;
-    text-decoration: none;
 }
 
 .login {
     background-color: #f24b88;
-    border: 1px solid #f24b88;
     color: #f2f2f2;
-    font-size: 14px;
-    text-align: center;
-    margin: 0;
-    padding: 0 7px;
+    text-transform: uppercase;
+    padding: 2px 5px;
 }
 
 .signIn {
     color: #F2F2F2;
     border: 1px solid white;
-    font-size: 14px;
-    text-align: center;
-    margin: 0;
-    padding: 0 7px;
-    
+    text-transform: uppercase;
+
 }
 
-.el-menu-item {
-    line-height:21px;
+.autorize__buttons {
+    padding: auto auto;
+    padding-right: 0;
+    padding-left: 0;
+
+
+
 }
+
 .login:hover {
     background-color: #f24b88;
-}
-</style>
+}</style>
